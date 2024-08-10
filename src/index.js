@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const {sendBasicEmail} = require('./services/email-service');
 
 const {PORT} = require('./config/serverConfig');
 
@@ -13,6 +14,13 @@ const setupAndStartServer = async()=> {
 
       app.listen(PORT,()=> {
         console.log(`Server started at ${PORT}`);
+
+        sendBasicEmail(
+          'support@admin.com',
+          'sksingh8278@gmail.com',
+          'This is a testing email',
+          'Hey, how are you I hope you like the support'
+        );
       });
 }
 
